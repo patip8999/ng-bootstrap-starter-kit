@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponentModule } from './components/navbar/navbar.component-module';
+import { TeamsComponentModule } from './components/teams/teams.component-module';
+import { TeamsService } from './services/teams.service';
 
 @NgModule({
   declarations: [
@@ -14,9 +16,10 @@ import { NavbarComponentModule } from './components/navbar/navbar.component-modu
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NavbarComponentModule
+    NavbarComponentModule,
+    TeamsComponentModule
   ],
-  providers: [],
+  providers: [TeamsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
