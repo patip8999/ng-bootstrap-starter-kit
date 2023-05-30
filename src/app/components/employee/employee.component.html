@@ -1,0 +1,22 @@
+<div class="main-container d-flex justify-content-center align-items-center">
+    <div class="col-lg-8">
+      <div class="page-header">
+    <h1>Employees</h1>
+    <p class="lead">You can browse through employees below</p>
+  </div>
+  <hr>
+  <div class="content-list">
+    <div class="content-list-body row">
+  
+      <div class="col-6" *ngFor="let member of employees$ | async">
+        <a class="media media-member" [routerLink]="'/users/' + member.id">
+          <img [alt]="member.firstName + ' ' + member.lastName" [src]="member.avatarUrl" class="avatar avatar-lg"/>
+          <div class="media-body">
+            <h6 class="mb-0" data-filter-by="text">{{member.firstName + ' ' + member.lastName}}</h6>
+            <span class="text-body">{{member.position}}</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  

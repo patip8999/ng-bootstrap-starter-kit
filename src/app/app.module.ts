@@ -8,6 +8,7 @@ import { NavbarComponentModule } from './components/navbar/navbar.component-modu
 import { TeamsComponentModule } from './components/teams/teams.component-module';
 import { TeamsService } from './services/teams.service';
 import { ProjectsService } from './services/projects.service';
+import { EmployeesService } from './services/employees.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { ProjectsService } from './services/projects.service';
     NavbarComponentModule,
     TeamsComponentModule
   ],
-  providers: [TeamsService, ProjectsService],
+  providers: [TeamsService, ProjectsService, EmployeesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
