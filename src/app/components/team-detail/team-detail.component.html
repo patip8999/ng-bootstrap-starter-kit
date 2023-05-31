@@ -1,0 +1,27 @@
+<div class="main-container d-flex justify-content-center align-items-center">
+  <div class="col-lg-8">
+    <div class="page-header">
+      <ng-container *ngIf="TeamDetail$ | async as team">
+        <div class="page-header">
+          <div class="d-flex align-items-center">
+            <h1>{{ team.name }}</h1>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-6">
+           
+              
+              <p class="lead">{{ team.description }}</p>
+                  <div class="d-flex flex-wrap">
+                <div class="team-member" *ngFor="let member of team.members">
+                  <img class="avatar avatar-lm" [src]="member.avatarUrl"  />
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+     
+      </ng-container>
+    </div>
+  </div>
+</div>
+<hr>

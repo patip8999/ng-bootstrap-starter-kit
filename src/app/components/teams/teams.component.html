@@ -12,7 +12,8 @@
       <div class="content-list-body">
         <div class="row">
           <div class="col-md-6" *ngFor="let teams of teamList$ | async">
-            <div class="card card-project" [routerLink]="'/teams/' + teams.id">
+            <div class="card card-project" 
+              [routerLink]="'/teams/' + teams.id">
               <div class="card-body">
                 <div class="dropdown card-options">
                   <button
@@ -25,11 +26,11 @@
                   ></button>
                 </div>
                 <div class="card-title">
-                  <a href="#">
+              
                     <h5 data-filter-by="text" class="H5-filter-by-text">
                       {{ teams.name }}
                     </h5>
-                  </a>
+              
                 </div>
                 <p class="card-title">
                   Projects: {{ teams.projects.length }} Members: {{ teams.members.length }}
