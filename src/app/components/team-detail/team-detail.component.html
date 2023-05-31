@@ -8,20 +8,53 @@
           </div>
           <div class="row mt-2">
             <div class="col-md-6">
-           
-              
               <p class="lead">{{ team.description }}</p>
-                  <div class="d-flex flex-wrap">
+              <div class="d-flex flex-wrap">
                 <div class="team-member" *ngFor="let member of team.members">
-                  <img class="avatar avatar-lm" [src]="member.avatarUrl"  />
+                  <img class="avatar avatar-lm" [src]="member.avatarUrl" />
                 </div>
-              </div>
               </div>
             </div>
           </div>
-     
+          <ul class="nav nav-tabs nav-fill" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                data-toggle="tab"
+                [routerLink]="'/projects/'"
+                role="tab"
+                aria-controls="projects"
+                aria-selected="true"
+                >Projects</a
+              >
+            </li>
+          </ul>
+          <div class="row justify-content-center mt-4">
+            <div class="col-lg-10">
+              <div class="content-list-body">
+                <div class="row">
+                  <div class="col-md-12" *ngIf="Projects$ | async as projects">
+                    <div class="card card-project">
+                      <div class="card-body">
+                        <div class="card-title">
+                          <h5 data-filter-by="text" class="H5-filter-by-text">{{ projects.name }}</h5>
+                       
+                        </div>
+                        <p class="card-title">
+                          Due on {{ projects.dueDate | dateFormat }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12" *ngIf="!(Projects$ | async)">
+                    <p>No projects found.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </ng-container>
     </div>
   </div>
 </div>
-<hr>
