@@ -1,94 +1,27 @@
-<ng-container *ngIf="Detail$ | async as item">
-<div _ngcontent-nch-c32="" class="page-header">
-  <h1 _ngcontent-nch-c32="">{{
-    item.firstName
-  }}</h1>
-  <p _ngcontent-nch-c32="" class="lead">description 1</p>
-  <div _ngcontent-nch-c32="" class="d-flex align-items-center">
-    <ul _ngcontent-nch-c32="" class="avatars">
-      <li _ngcontent-nch-c32="">
-        <a
-          _ngcontent-nch-c32=""
-          placement="top"
-          ng-reflect-placement="top"
-          ng-reflect-tooltip="Zaria"
-          title="Zaria"
-          ><img
-            _ngcontent-nch-c32=""
-            class="avatar"
-            alt="Zaria Block"
-            src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/814.jpg" /></a
-        ><!--container-->
-      </li>
-      <li _ngcontent-nch-c32="">
-        <a
-          _ngcontent-nch-c32=""
-          placement="top"
-          ng-reflect-placement="top"
-          ng-reflect-tooltip="Shaylee"
-          title="Shaylee"
-          ><img
-            _ngcontent-nch-c32=""
-            class="avatar"
-            alt="Shaylee Schneider"
-            src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/662.jpg" /></a
-        ><!--container-->
-      </li>
-      <li _ngcontent-nch-c32="">
-        <a
-          _ngcontent-nch-c32=""
-          placement="top"
-          ng-reflect-placement="top"
-          ng-reflect-tooltip="Muhammad"
-          title="Muhammad"
-          ><img
-            _ngcontent-nch-c32=""
-            class="avatar"
-            alt="Muhammad VonRueden"
-            src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/381.jpg" /></a
-        ><!--container-->
-      </li>
-      <li _ngcontent-nch-c32="">
-        <a
-          _ngcontent-nch-c32=""
-          placement="top"
-          ng-reflect-placement="top"
-          ng-reflect-tooltip="Rebeka"
-          title="Rebeka"
-          ><img
-            _ngcontent-nch-c32=""
-            class="avatar"
-            alt="Rebeka Erdman"
-            src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/66.jpg" /></a
-        ><!--container-->
-      </li>
-      <!--bindings={
-    "ng-reflect-ng-for-of": "[object Object],[object Object"
-  }-->
-    </ul>
-    <button _ngcontent-nch-c32="" class="btn btn-round flex-shrink-0">
-      <i _ngcontent-nch-c32="" class="material-icons">add</i>
-    </button>
-  </div>
-  <div _ngcontent-nch-c32="">
-    <div _ngcontent-nch-c32="" class="progress">
-      <div
-        _ngcontent-nch-c32=""
-        ng-reflect-ng-class="progress-bar bg-success"
-        class="progress-bar bg-success"
-        style="width: 100%"
-      ></div>
-    </div>
-    <div
-      _ngcontent-nch-c32=""
-      class="d-flex justify-content-between text-small"
-    >
-      <div _ngcontent-nch-c32="" class="d-flex align-items-center">
-        <i _ngcontent-nch-c32="" class="material-icons">playlist_add_check</i
-        ><span _ngcontent-nch-c32="">3/3</span>
-      </div>
-      <span _ngcontent-nch-c32="">Due on Nov 27, 2022</span>
+<div class="main-container d-flex justify-content-center align-items-center">
+  <div class="col-lg-8">
+    <div class="page-header">
+      <ng-container *ngIf="Detail$ | async as item">
+        <div class="page-header">
+          <div class="d-flex align-items-center">
+            <img
+              class="avatar avatar-lg"
+              [alt]="item.firstName"
+              [src]="item.avatarUrl"
+            />
+            <div class="ml-3">
+              <h1>{{ item.firstName }} {{ item.lastName }}</h1>
+              <p class="lead">{{ item.position }}</p>
+            </div>
+          </div>
+          <ul class="nav nav-tabs nav-fill" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" [routerLink]="'/teams/'" role="tab" aria-controls="projects" aria-selected="true">Teams</a>
+            </li>
+           
+          </ul>
+        </div>
+      </ng-container>
     </div>
   </div>
 </div>
-</ng-container>

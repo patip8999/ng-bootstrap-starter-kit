@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import { EmployeeModel } from 'src/app/models/employee.model';
@@ -10,13 +11,23 @@ import { EmployeesService } from 'src/app/services/employees.service';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EmployeeDetailComponent  {
+export class EmployeeDetailComponent  implements OnInit {
 
-readonly Detail$: Observable<EmployeeModel>= this.employeesService.getOne("id")
+Detail$: Observable<EmployeeModel>= this.employeesService.getOne('id')
 
   constructor(
 
 
-    private employeesService: EmployeesService
+    private employeesService: EmployeesService,
+    private route: ActivatedRoute,
   ) { }
-  }
+
+  
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      const employeeId = params.get('id');
+      if (employeeId !== null) {
+        this.Detail$ = this.employeesService.getOne(employeeId);
+      }
+    });
+  }}
