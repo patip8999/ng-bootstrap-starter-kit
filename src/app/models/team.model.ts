@@ -10,5 +10,6 @@ export interface TeamModel {
     members: {
       id: number;
       name: string;
+      avatarUrl:string
     }[];
   }

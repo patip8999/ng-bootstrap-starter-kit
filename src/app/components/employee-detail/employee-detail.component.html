@@ -4,11 +4,7 @@
       <ng-container *ngIf="Detail$ | async as item">
         <div class="page-header">
           <div class="d-flex align-items-center">
-            <img
-              class="avatar avatar-lg"
-              [alt]="item.firstName"
-              [src]="item.avatarUrl"
-            />
+            <img class="avatar avatar-lg" [alt]="item.firstName" [src]="item.avatarUrl" />
             <div class="ml-3">
               <h1>{{ item.firstName }} {{ item.lastName }}</h1>
               <p class="lead">{{ item.position }}</p>
@@ -16,10 +12,45 @@
           </div>
           <ul class="nav nav-tabs nav-fill" role="tablist">
             <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" [routerLink]="'/teams/'" role="tab" aria-controls="projects" aria-selected="true">Teams</a>
+              <a
+                class="nav-link active"
+                data-toggle="tab"
+                [routerLink]="'/teams/'"
+                role="tab"
+                aria-controls="projects"
+                aria-selected="true"
+                >Teams</a
+              >
             </li>
-           
           </ul>
+          <div class="row justify-content-center mt-4">
+            <div class="col-lg-10">
+              <div class="content-list-body">
+                <div class="row">
+                  <div class="col-md-12" *ngIf="Team$ | async as team">
+                    <div class="card card-project">
+                      <div class="card-body">
+                        <div class="card-title">
+                          <h5 data-filter-by="text" class="H5-filter-by-text">{{ team.name }}</h5>
+                          <!-- Wyświetlenie nazwy zespołu -->
+                          <p class="card-title">
+                            Projects: {{ team.projects.length }} Members: {{ team.members.length }}
+                          </p>
+                        </div>
+                        <div class="card-text mt-4">
+                          <div class="d-flex flex-wrap">
+                            <div class="team-member" *ngFor="let member of team.members">
+                              <img class="avatar avatar-sm" [src]="member.avatarUrl" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </ng-container>
     </div>
