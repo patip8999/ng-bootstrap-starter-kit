@@ -7,12 +7,12 @@
     </div>
   </div>
   <hr>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center" >
     <div class="col-lg-8">
       <div class="content-list-body">
         <div class="row">
-          <div class="col-md-6" *ngFor="let team of teamList$ | async">
-            <div class="card card-project">
+          <div class="col-md-6" *ngFor="let teams of teamList$ | async">
+            <div class="card card-project" [routerLink]="'/teams/' + teams.id">
               <div class="card-body">
                 <div class="dropdown card-options">
                   <button
@@ -27,12 +27,12 @@
                 <div class="card-title">
                   <a href="#">
                     <h5 data-filter-by="text" class="H5-filter-by-text">
-                      {{ team.name }}
+                      {{ teams.name }}
                     </h5>
                   </a>
                 </div>
                 <p class="card-title">
-                  Projects: {{ team.projects.length }} Members: {{ team.members.length }}
+                  Projects: {{ teams.projects.length }} Members: {{ teams.members.length }}
                 </p>
                 <div class="card-meta d-flex justify-content-between">
                   <div class="d-flex align-items-center"></div>

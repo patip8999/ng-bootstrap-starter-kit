@@ -13,6 +13,7 @@ import { EmployeeComponentModule } from './components/employee/employee.componen
 import { HomeComponentModule } from './components/home/home.component-module';
 import { TasksService } from './services/tasks.service';
 import { ChecklistItemsService } from './services/check-list-item.service';
+import { EmployeeDetailComponentModule } from './components/employee-detail/employee-detail.component-module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ChecklistItemsService } from './services/check-list-item.service';
     TeamsComponentModule,
     EmployeeComponentModule,
     HomeComponentModule,
-    HomeComponentModule
+    HomeComponentModule,
+   
   ],
   providers: [TeamsService, ProjectsService, EmployeesService, TasksService, ChecklistItemsService],
   bootstrap: [AppComponent]
