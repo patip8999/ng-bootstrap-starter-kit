@@ -6,11 +6,23 @@ import { EmployeeComponent } from './components/employee/employee.component';
 import { TeamsComponentModule } from './components/teams/teams.component-module';
 import { ProjectsComponentModule } from './components/projects/projects.component-module';
 import { EmployeeComponentModule } from './components/employee/employee.component-module';
+import { HomeComponent } from './components/home/home.component';
 
-const routes: Routes = [{ path: 'teams', component: TeamsComponent }, { path: 'projects', component: ProjectsComponent }, { path: 'employees', component: EmployeeComponent }];
+const routes: Routes = [
+  { path: 'teams', component: TeamsComponent },
+  { path: 'projects', component: ProjectsComponent },
+  { path: 'employees', component: EmployeeComponent },
+  { path: '', component: HomeComponent },
+ 
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), TeamsComponentModule, ProjectsComponentModule, EmployeeComponentModule],
+  imports: [
+    RouterModule.forRoot(routes),
+    TeamsComponentModule,
+    ProjectsComponentModule,
+    EmployeeComponentModule,
+  ],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

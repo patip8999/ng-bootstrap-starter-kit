@@ -9,6 +9,10 @@ import { TeamsComponentModule } from './components/teams/teams.component-module'
 import { TeamsService } from './services/teams.service';
 import { ProjectsService } from './services/projects.service';
 import { EmployeesService } from './services/employees.service';
+import { EmployeeComponentModule } from './components/employee/employee.component-module';
+import { HomeComponentModule } from './components/home/home.component-module';
+import { TasksService } from './services/tasks.service';
+import { ChecklistItemsService } from './services/check-list-item.service';
 
 @NgModule({
   declarations: [
@@ -19,9 +23,12 @@ import { EmployeesService } from './services/employees.service';
     AppRoutingModule,
     HttpClientModule,
     NavbarComponentModule,
-    TeamsComponentModule
+    TeamsComponentModule,
+    EmployeeComponentModule,
+    HomeComponentModule,
+    HomeComponentModule
   ],
-  providers: [TeamsService, ProjectsService, EmployeesService],
+  providers: [TeamsService, ProjectsService, EmployeesService, TasksService, ChecklistItemsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
