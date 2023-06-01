@@ -22,9 +22,9 @@ export interface ProjectWithData {
   readonly percentage: number;
 }
 export const mapProjectWithData = (project: ProjectModel, employees: EmployeeModel[]): ProjectWithData => {
-  const startDate = project.startDate instanceof Date ? project.startDate : null;
-  const dueDate = project.dueDate instanceof Date ? project.dueDate : null;
-
+  const startDate = project.startDate instanceof Date ? project.startDate : new Date();
+  const dueDate = project.dueDate instanceof Date ? project.dueDate : new Date();
+  
  
   return {
     id: project.id,

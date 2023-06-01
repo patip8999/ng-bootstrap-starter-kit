@@ -6,44 +6,84 @@
           <ng-container *ngIf="Detail$ | async as item">
             <div class="page-header">
               <div class="d-flex align-items-center">
-                <img class="avatar avatar-lg" [alt]="item.firstName" [src]="item.avatarUrl" />
+                <img
+                  class="avatar avatar-lg"
+                  [alt]="item.firstName"
+                  [src]="item.avatarUrl"
+                />
                 <div class="ml-3">
                   <h1>{{ item.firstName }} {{ item.lastName }}</h1>
                   <p class="lead">{{ item.position }}</p>
                 </div>
               </div>
             </div>
-            <hr>
+            <hr />
             <ul class="nav nav-tabs nav-fill" role="tablist">
               <li class="nav-item">
-                <a class="nav-link" (click)="selectedTabSubject.next('teams')" role="tab" aria-controls="projects" [class.active]="(selectedTab$ | async) === 'teams'">Teams</a>
+                <a
+                  class="nav-link"
+                  (click)="selectedTabSubject.next('teams')"
+                  role="tab"
+                  aria-controls="projects"
+                  [class.active]="(selectedTab$ | async) === 'teams'"
+                  >Teams</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link" (click)="selectedTabSubject.next('projects')" role="tab" aria-controls="members" [class.active]="(selectedTab$ | async) === 'projects'">Projects</a>
+                <a
+                  class="nav-link"
+                  (click)="selectedTabSubject.next('projects')"
+                  role="tab"
+                  aria-controls="members"
+                  [class.active]="(selectedTab$ | async) === 'projects'"
+                  >Projects</a
+                >
               </li>
             </ul>
 
-          <div class="content-list-body row filter-list-1685645598024">
-            <div class="col-lg-6" *ngIf="(selectedTab$ | async) === 'teams' && (Team$ | async) as team">
-              <div class="tab-content">
-                <div class="tab-pane fade show active" id="teams" role="tabpanel" data-filter-list="content-list-body">
-                  <div class="content-list">
-                    <div class="row content-list-head">
-                      <div class="col-auto">
-                        <h3>Teams</h3>
+            <div class="content-list-body row filter-list-1685645598024">
+              <div
+                class="col-lg-6"
+                *ngIf="
+                  (selectedTab$ | async) === 'teams' && (Team$ | async) as team
+                "
+              >
+                <div class="tab-content">
+                  <div
+                    class="tab-pane fade show active"
+                    id="teams"
+                    role="tabpanel"
+                    data-filter-list="content-list-body"
+                  >
+                    <div class="content-list">
+                      <div class="row content-list-head">
+                        <div class="col-auto">
+                          <h3>Teams</h3>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="content-list-body">
-                    <div class="card card-project">
-                      <div class="card-body">
-                        <div class="card-title">
-                          <h5 data-filter-by="text" class="H5-filter-by-text">{{ team.name }}</h5>
-                        </div>
-                        <p class="card-title">Projects: {{ team.projects.length }} Members: {{ team.members.length }}</p>
-                        <div class="d-flex flex-wrap">
-                          <div class="team-member" *ngFor="let member of team.members">
-                            <img class="avatar avatar-sm" [src]="member.avatarUrl" />
+                    <div class="content-list-body">
+                      <div class="card card-project">
+                        <div class="card-body">
+                          <div class="card-title">
+                            <h5 data-filter-by="text" class="H5-filter-by-text">
+                              {{ team.name }}
+                            </h5>
+                          </div>
+                          <p class="card-title">
+                            Projects: {{ team.projects.length }} Members:
+                            {{ team.members.length }}
+                          </p>
+                          <div class="d-flex flex-wrap">
+                            <div
+                              class="team-member"
+                              *ngFor="let member of team.members"
+                            >
+                              <img
+                                class="avatar avatar-sm"
+                                [src]="member.avatarUrl"
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -51,48 +91,60 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-6" *ngIf="(selectedTab$ | async) === 'projects' && (Projects$ | async) as projects">
-              <div class="tab-content">
-                <div class="tab-pane fade show active" id="projects" role="tabpanel" data-filter-list="content-list-body">
-                  <div class="content-list">
-                    <div class="row content-list-head">
-                      <div class="col-auto">
-                        <h3>Projects</h3>
+              <div
+                class="col-lg-6"
+                *ngIf="
+                  (selectedTab$ | async) === 'projects' &&
+                  (Projects$ | async) as projects
+                "
+              >
+                <div class="tab-content">
+                  <div
+                    class="tab-pane fade show active"
+                    id="projects"
+                    role="tabpanel"
+                    data-filter-list="content-list-body"
+                  >
+                    <div class="content-list">
+                      <div class="row content-list-head">
+                        <div class="col-auto">
+                          <h3>Projects</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="card card-project"
+                    *ngFor="let project of projects"
+                  >
+                    <div class="card-body">
+                      <div class="card-title">
+                        <h2 data-filter-by="text" class="H5-filter-by-text">
+                          {{ project.name }}
+                        </h2>
+                      </div>
+                      <div class="card-meta d-flex justify-content-between">
+                        <div class="d-flex align-items-center">
+                          <i class="material-icons">playlist_add_check</i>
+                          <span>{{ (Task$ | async)?.length || 0 }}</span>
+                        </div>
+                        <span
+                          >Due
+                          {{
+                            project.startDate | daysBetween : project.dueDate
+                          }}
+                          days</span
+                        >
                       </div>
                     </div>
                   </div>
                 </div>
-
-                  <div class="card card-project" *ngFor="let project of projects">
- 
-                    <div class="card-body">
-                    
-                      <div class="card-title">
-                        <h2 data-filter-by="text" class="H5-filter-by-text">{{ project.name }}</h2>
-                      </div>
-                      <div class="card-meta d-flex justify-content-between">
-                      <div class="d-flex align-items-center">
-                        <i class="material-icons">playlist_add_check</i>
-                        <span>{{ (Task$ | async)?.length || 0 }}</span>
-                      </div>
-                        <span>Due {{ project.startDate | daysBetween : project.dueDate }} days</span>
-                      
-                      </div>
-                     
-                    </div>
-             
-                  
-
-
-
-
-                </div>
               </div>
             </div>
-       </div>
-
-</ng-container></div>
+          </ng-container>
+        </div>
+      </div>
     </div>
   </div>
 </div>

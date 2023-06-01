@@ -40,15 +40,17 @@
                 role="tabpanel"
                 data-filter-list="content-list-body"
               >
-                <div class="content-list">
-                  <div class="row content-list-head">
-                    <div class="col-auto">
-                      <h3>Projekty</h3>
-                    </div>
-                  </div>
-                </div>
+                
                 <div class="content-list-body">
                   <div class="row" *ngIf="showProjects.value">
+
+                    <div class="content-list">
+                      <div class="row content-list-head">
+                        <div class="col-auto">
+                          <h3>Projekty</h3>
+                        </div>
+                      </div>
+                    </div>
                     <div class="col-md-12" *ngIf="Projects$ | async as projects">
                       <div class="card card-project">
                         <div class="card-body">
