@@ -1,4 +1,5 @@
 export interface TeamModel {
+    projectIds: any;
     readonly name: string;
     readonly id: string;
     readonly description: string;

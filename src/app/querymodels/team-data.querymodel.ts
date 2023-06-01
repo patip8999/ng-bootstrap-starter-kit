@@ -1,7 +1,7 @@
 import { EmployeeModel } from "../models/employee.model";
-import { ProjectModel } from "../models/project.model";
+import { ProjectModel, mapProjectWithData } from "../models/project.model";
 import { TeamModel } from "../models/team.model";
-import { ProjectWithDataQueryModel, mapProjectWithData } from "./project-data.querymodel";
+import { ProjectWithDataQueryModel,} from "./project-data.querymodel";
 
 export interface TeamWithDataQueryModel {
     readonly id: string;
