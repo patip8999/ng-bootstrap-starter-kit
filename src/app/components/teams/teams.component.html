@@ -1,48 +1,30 @@
-<div class="main-container d-flex justify-content-center align-items-center">
-    <div class="col-lg-8">
-      <div class="page-header ">
-        <h1>Teams</h1>
-        <p class="lead">You can browse through teams below</p>
-      </div>
+<div class="main-container">
+  <div class="container">
+
+      <div class="col-lg-11 col-xl-10">
+        <div class="page-header">
+          <h1>Teams</h1>
+          <p class="lead">You can browse through teams below</p>
+        </div>
+  
     </div>
-  </div>
-  <hr>
-  <div class="row justify-content-center" >
-    <div class="col-lg-8">
-      <div class="content-list-body">
-        <div class="row">
-          <div class="col-md-6" *ngFor="let teams of teamList$ | async">
-            <div class="card card-project" 
-              [routerLink]="'/teams/' + teams.id">
-              <div class="card-body">
-                <div class="dropdown card-options">
-                  <button
-                    class="btn-options"
-                    type="button"
-                    id="project-dropdown-button-1"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  ></button>
-                </div>
-                <div class="card-title">
-              
-                    <h5 data-filter-by="text" class="H5-filter-by-text">
-                      {{ teams.name }}
-                    </h5>
-              
-                </div>
-                <p class="card-title">
-                  Projects: {{ teams.projects.length }} Members: {{ teams.members.length }}
-                </p>
-                <div class="card-meta d-flex justify-content-between">
-                  <div class="d-flex align-items-center"></div>
-                </div>
-              </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-lg-6" *ngFor="let team of teamList$ | async">
+        <div class="card card-project" [routerLink]="'/teams/' + team.id">
+          <div class="card-body">
+            <div class="card-title">
+              <h5 data-filter-by="text" class="H5-filter-by-text">
+                {{ team.name }}
+              </h5>
+              <p class="card-title">
+                Projects: {{ team.projects.length }} Members: {{ team.members.length }}
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

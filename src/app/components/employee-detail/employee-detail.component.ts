@@ -5,11 +5,14 @@ import { Observable, Subject, map } from 'rxjs';
 import { ChecklistItemModel } from 'src/app/models/check-list-item.model';
 import { EmployeeModel } from 'src/app/models/employee.model';
 import { ProjectModel } from 'src/app/models/project.model';
+import { TaskModel } from 'src/app/models/task.model';
 import { TeamModel } from 'src/app/models/team.model';
+import { TaskProgressPipe } from 'src/app/pipes/task-progress/task-progress.pipe';
 import { ProjectWithDataQueryModel } from 'src/app/querymodels/project-data.querymodel';
 import { ChecklistItemsService } from 'src/app/services/check-list-item.service';
 import { EmployeesService } from 'src/app/services/employees.service';
 import { ProjectsService } from 'src/app/services/projects.service';
+import { TasksService } from 'src/app/services/tasks.service';
 import { TeamsService } from 'src/app/services/teams.service';
 
 @Component({
@@ -25,6 +28,8 @@ Team$: Observable<TeamModel>= this._teamService.getOne('id')
 TeamAvatars$: Observable<TeamModel[]>=this._teamService.getAll()
 Projects$: Observable<ProjectWithDataQueryModel[]>=this._projectsService.getProjectsByEmployeeId('employeeId')
 CheckList$: Observable<ChecklistItemModel[]>= this._checkListItemService.getAll()
+Task$: Observable<TaskModel[]> = this._taskService.getAll()
+taskProgressPipe = new TaskProgressPipe();
   constructor(
 
 
@@ -32,7 +37,8 @@ CheckList$: Observable<ChecklistItemModel[]>= this._checkListItemService.getAll(
     private route: ActivatedRoute,
     private _teamService: TeamsService,
     private _projectsService: ProjectsService,
-    private _checkListItemService: ChecklistItemsService
+    private _checkListItemService: ChecklistItemsService,
+    private _taskService: TasksService
   ) { }
 
   public selectedTabSubject = new Subject<string>();
@@ -59,4 +65,5 @@ CheckList$: Observable<ChecklistItemModel[]>= this._checkListItemService.getAll(
   selectProjectsTab() {
     this.selectedTabSubject.next('projects');
   }
+  
 }

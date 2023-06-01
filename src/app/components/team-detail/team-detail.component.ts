@@ -5,7 +5,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { ProjectModel } from 'src/app/models/project.model';
 import { TeamModel } from 'src/app/models/team.model';
 import { ProjectsService } from 'src/app/services/projects.service';
@@ -28,9 +28,9 @@ export class TeamDetailComponent implements OnInit{
     private route: ActivatedRoute,
     private _projectsService: ProjectsService
   ) {}
-
-
-
+  showProjects: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public selectedTabSubject = new Subject<string>();
+  selectedTab$ = this.selectedTabSubject.asObservable();
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.teamId = params.get('id');
@@ -41,5 +41,10 @@ export class TeamDetailComponent implements OnInit{
         this.Projects$ = this._projectsService.getOne(this.teamId);
       }
     });
+  }
+  selectProjectsTab() {
+    this.showProjects.next(true);
+
+    this.selectedTabSubject.next('projects');
   }
 }

@@ -1,60 +1,77 @@
-<div class="main-container d-flex justify-content-center align-items-center">
-  <div class="col-lg-8">
-    <div class="page-header">
-      <ng-container *ngIf="TeamDetail$ | async as team">
-        <div class="page-header">
-          <div class="d-flex align-items-center">
-            <h1>{{ team.name }}</h1>
-          </div>
-          <div class="row mt-2">
-            <div class="col-md-6">
-              <p class="lead">{{ team.description }}</p>
-              <div class="d-flex flex-wrap">
-                <div class="team-member" *ngFor="let member of team.members">
-                  <img class="avatar avatar-lm" [src]="member.avatarUrl" />
+<div class="main-container">
+  <div class="container">
+    <div class="col-lg-11 col-xl-10">
+      <div class="page-header">
+        <ng-container *ngIf="TeamDetail$ | async as team">
+          <div class="page-header">
+            <div class="d-flex align-items-center">
+              <h1>{{ team.name }}</h1>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <p class="lead">{{ team.description }}</p>
+                <div class="d-flex flex-wrap">
+                  <div class="team-member" *ngFor="let member of team.members">
+                    <img class="avatar avatar-lm" [src]="member.avatarUrl" />
+                  </div>
                 </div>
               </div>
             </div>
+            <hr>
+            <ul class="nav nav-tabs nav-fill" role="tablist">
+             
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  (click)="selectProjectsTab()"
+                  role="tab"
+                  aria-controls="projects"
+                  [class.active]="showProjects.value"
+                  >Projects</a
+                >
+              </li>
+            </ul>
           </div>
-          <ul class="nav nav-tabs nav-fill" role="tablist">
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                data-toggle="tab"
-                [routerLink]="'/projects/'"
-                role="tab"
-                aria-controls="projects"
-                aria-selected="true"
-                >Projects</a
+          <div class="content-list-body row filter-list-1685645598024">
+            <div class="col-lg-6">
+              <div
+                class="tab-pane fade show active"
+                id="projects"
+                role="tabpanel"
+                data-filter-list="content-list-body"
               >
-            </li>
-          </ul>
-          <div class="row justify-content-center mt-4">
-            <div class="col-lg-10">
-              <div class="content-list-body">
-                <div class="row">
-                  <div class="col-md-12" *ngIf="Projects$ | async as projects">
-                    <div class="card card-project">
-                      <div class="card-body">
-                        <div class="card-title">
-                          <h5 data-filter-by="text" class="H5-filter-by-text">{{ projects.name }}</h5>
-                       
-                        </div>
-                        <p class="card-title">
-                          Due on {{ projects.dueDate | dateFormat }}
-                        </p>
-                      </div>
+                <div class="content-list">
+                  <div class="row content-list-head">
+                    <div class="col-auto">
+                      <h3>Projekty</h3>
                     </div>
                   </div>
-                  <div class="col-md-12" *ngIf="!(Projects$ | async)">
-                    <p>No projects found.</p>
+                </div>
+                <div class="content-list-body">
+                  <div class="row" *ngIf="showProjects.value">
+                    <div class="col-md-12" *ngIf="Projects$ | async as projects">
+                      <div class="card card-project">
+                        <div class="card-body">
+                          <div class="card-title">
+                            <h5 data-filter-by="text" class="H5-filter-by-text">{{ projects.name }}</h5>
+                          </div>
+                          <p class="card-title">
+                            Termin: {{ projects.dueDate | dateFormat }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-12" *ngIf="!(Projects$ | async)">
+                      <p>Brak projektów.</p>
+                    </div>
                   </div>
+                
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </ng-container>
+        </ng-container>
+      </div>
     </div>
   </div>
 </div>
