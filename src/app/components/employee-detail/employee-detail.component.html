@@ -13,13 +13,14 @@
          
           <ul class="nav nav-tabs nav-fill" role="tablist">
             <li class="nav-item">
-              <a class="nav-link" data-toggle="tab"   [routerLink]="'/teams/'" role="tab" aria-controls="projects" aria-selected="false">Teams</a>
+              <a class="nav-link" (click)="selectedTabSubject.next('teams')" role="tab" aria-controls="projects"
+                [class.active]="(selectedTab$ | async) === 'teams'">Teams</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" [routerLink]="'/projects/'" role="tab" aria-controls="members" aria-selected="true">Projects</a>
+              <a class="nav-link" (click)="selectedTabSubject.next('projects')" role="tab" aria-controls="members"
+                [class.active]="(selectedTab$ | async) === 'projects'">Projects</a>
             </li>
           </ul>
-
 
 
 
@@ -61,6 +62,29 @@
                               <img class="avatar avatar-sm" [src]="member.avatarUrl" />
                             </div>
                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center mt-4" *ngIf="(selectedTab$ | async) === 'projects'">
+            <div class="col-lg-10">
+              <div class="content-list-body">
+                <div class="row">
+                  <div class="col-md-12" *ngIf="Projects$ | async as projects">
+                    <div class="card card-project" *ngFor="let project of projects">
+                      <div class="card-body">
+                        <div class="card-title">
+                          <h5 data-filter-by="text" class="H5-filter-by-text">{{ project.name }}</h5>
+                          <p class="card-title">
+                            Start Date: {{ project.startDate | date }} - Due Date: {{ project.dueDate | date }}
+                          </p>
+                        </div>
+                        <div class="card-text mt-4">
+                          <p>{{ project.description }}</p>
                         </div>
                       </div>
                     </div>
