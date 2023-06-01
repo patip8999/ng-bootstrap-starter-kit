@@ -1,40 +1,52 @@
 <div class="main-container">
   <div class="container">
-
-      <div class="col-lg-11 col-xl-10">
-<div class="page-header">
-    <h1>Tasks</h1>
-    <p class="lead">You can browse through tasks below</p>
-  </div>
-  <hr>
-  <div class="card-list-body">
-    <div class="card card-task" *ngFor="let task of tasks$ | async">
-      <div class="progress">
-        <div [ngClass]="'progress-bar ' + (task | progress)" [style.width.%]="task.checklist | percentage"
-             [attr.aria-valuenow]="task.checklist | percentage" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="col-lg-11 col-xl-10">
+      <div class="page-header">
+        <h1>Tasks</h1>
+        <p class="lead">You can browse through tasks below</p>
       </div>
-      <div class="card-body">
-        <div class="card-title">
-          <a ><h6>{{task.name}}</h6></a>
-          <span class="text-small">Due on {{task.dueDate | date}}</span>
-        </div>
-        <div class="card-meta">
-          <ul class="avatars">
-  
-            <li *ngFor="let assignee of task.assignees">
-              <a  [title]="assignee.firstName">
-                <img [alt]="assignee.firstName + ' ' + assignee.lastName" class="avatar" [src]="assignee.avatarUrl"/>
-              </a>
-            </li>
-  
-          </ul>
-          <div class="d-flex align-items-center">
-            <i class="material-icons">playlist_add_check</i>
-            <span>{{task.doneTaskCount}}/{{task.checklist.length}}</span>
+      <hr />
+      <div class="card-list-body">
+        <div class="card card-task" *ngFor="let task of tasks$ | async">
+          <div class="progress">
+            <div
+              [ngClass]="'progress-bar ' + (task | progress)"
+              [style.width.%]="task.checklist | percentage"
+              [attr.aria-valuenow]="task.checklist | percentage"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            ></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">
+              <a
+                ><h6>{{ task.name }}</h6></a
+              >
+              <span class="text-small">Due on {{ task.dueDate | date }}</span>
+            </div>
+            <div class="card-meta">
+              <ul class="avatars">
+                <li *ngFor="let assignee of task.assignees">
+                  <a [title]="assignee.firstName">
+                    <img
+                      [alt]="assignee.firstName + ' ' + assignee.lastName"
+                      class="avatar"
+                      [routerLink]="'/employees/' + assignee.id"
+                      [src]="assignee.avatarUrl"
+                    />
+                  </a>
+                </li>
+              </ul>
+              <div class="d-flex align-items-center">
+                <i class="material-icons">playlist_add_check</i>
+                <span
+                  >{{ task.doneTaskCount }}/{{ task.checklist.length }}</span
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  
   </div>
-  </div></div>
+</div>
