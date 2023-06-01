@@ -3,7 +3,7 @@ import { DateFormatPipe } from './date-format.pipe';
 
 @NgModule({
   imports: [],
-  declarations: [DateFormatPipe],
+  declarations: [DateFormatPipe, DateFormatPipe],
   providers: [],
   exports: [DateFormatPipe]
 })
