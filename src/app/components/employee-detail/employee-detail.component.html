@@ -80,7 +80,8 @@
                               *ngFor="let member of team.members"
                             >
                               <img
-                                class="avatar avatar-sm"
+                                class="avatar avatar-sm" 
+                                [routerLink]="'/employees/' + member.id"
                                 [src]="member.avatarUrl"
                               />
                             </div>
