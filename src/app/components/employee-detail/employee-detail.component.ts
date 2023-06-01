@@ -2,10 +2,12 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@
 import { ActivatedRoute } from '@angular/router';
 
 import { Observable, Subject, map } from 'rxjs';
+import { ChecklistItemModel } from 'src/app/models/check-list-item.model';
 import { EmployeeModel } from 'src/app/models/employee.model';
 import { ProjectModel } from 'src/app/models/project.model';
 import { TeamModel } from 'src/app/models/team.model';
 import { ProjectWithDataQueryModel } from 'src/app/querymodels/project-data.querymodel';
+import { ChecklistItemsService } from 'src/app/services/check-list-item.service';
 import { EmployeesService } from 'src/app/services/employees.service';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { TeamsService } from 'src/app/services/teams.service';
@@ -22,13 +24,15 @@ Detail$: Observable<EmployeeModel>= this.employeesService.getOne('id')
 Team$: Observable<TeamModel>= this._teamService.getOne('id')
 TeamAvatars$: Observable<TeamModel[]>=this._teamService.getAll()
 Projects$: Observable<ProjectWithDataQueryModel[]>=this._projectsService.getProjectsByEmployeeId('employeeId')
+CheckList$: Observable<ChecklistItemModel[]>= this._checkListItemService.getAll()
   constructor(
 
 
     private employeesService: EmployeesService,
     private route: ActivatedRoute,
     private _teamService: TeamsService,
-    private _projectsService: ProjectsService
+    private _projectsService: ProjectsService,
+    private _checkListItemService: ChecklistItemsService
   ) { }
 
   public selectedTabSubject = new Subject<string>();

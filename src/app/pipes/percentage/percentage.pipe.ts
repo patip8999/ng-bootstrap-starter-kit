@@ -1,12 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ChecklistItemModel } from 'src/app/models/check-list-item.model';
 
-
-@Pipe({
-  name: 'percentage'
-})
+@Pipe({ name: 'percentage' })
 export class PercentagePipe implements PipeTransform {
-  transform(taskChecklist: ChecklistItemModel[]): number {
-    return Math.ceil(taskChecklist.filter(t => t.isDone).length / taskChecklist.length * 100);
+  transform(checklist: any[]): number {
+    const completedItems = checklist.filter(item => item.isDone);
+    return Math.ceil((completedItems.length / checklist.length) * 100);
   }
 }
