@@ -16,12 +16,14 @@ export interface TaskDataQuerymodel {
   }
   export const mapTaskWithData = (task: TaskModel, employees: EmployeeModel[], checklistItems: ChecklistItemModel[]): TaskDataQuerymodel => {
     const taskChecklist = task.checkList.map(cId => checklistItems.find(cli => cli.id === cId) as ChecklistItemModel);
+    const startDate = task.startDate instanceof Date ? task.startDate : null;
+  const dueDate = task.dueDate instanceof Date ? task.dueDate : null;
     return {
       id: task.id,
       name: task.name,
       description: task.description,
-      startDate: new Date(task.startDate * 1000),
-      dueDate: new Date(task.dueDate * 1000),
+      startDate: startDate ? startDate : new Date(),
+    dueDate: dueDate ? dueDate : new Date(),
       doneTaskCount: taskChecklist.filter(c => c.isDone).length,
       checklist: taskChecklist,
       assignees: task.assigneeIds.map(aId => employees.find(e => e.id === aId) as EmployeeModel),

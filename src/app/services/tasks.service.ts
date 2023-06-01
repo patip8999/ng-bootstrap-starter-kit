@@ -17,7 +17,7 @@ export class TasksService {
     )
   }
 
-  getOne(taskId: string):Observable<TaskModel> {
-    return this._httpClient.get<TaskModel>(`https://63810e439440b61b0d10b7c7.mockapi.io/tasks/${taskId}`);
+  getOne(id: string):Observable<TaskModel> {
+    return this._httpClient.get<TaskModel>(`https://63810e439440b61b0d10b7c7.mockapi.io/tasks/${id}`);
   }
 }
